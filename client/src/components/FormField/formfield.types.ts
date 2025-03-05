@@ -6,7 +6,7 @@ export interface FormFieldProps {
   name: string;
   placeholder: string;
   value: string;
-  handleChange: (e: ChangeEvent) => void;
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   isSurpriseMe?: boolean;
   handleSurpriseMe?: () => void;
 }
