@@ -1,14 +1,15 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { preview } from "../../assets";
 import { FormField, Loader } from "../../components";
-import { getRamdomPrompt } from "../../utils";
+
 import {
   handleChange,
   handleSubmit,
   handleSurpriseMe,
   generateImage,
 } from "./handlers";
+
 import { SetFormState } from "./createPost.types";
 
 const CreatePost: React.FC = () => {
@@ -53,7 +54,7 @@ const CreatePost: React.FC = () => {
             value={form.prompt}
             handleChange={(() => handleChange(form, setForm))()}
             isSurpriseMe
-            handleSurpriseMe={handleSurpriseMe}
+            handleSurpriseMe={(() => handleSurpriseMe(form, setForm))()}
           />
 
           <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-64 p-3 h-64 flex justify-center items-center">
