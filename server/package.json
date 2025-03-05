@@ -1,0 +1,31 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cloudinary": "^2.5.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.12.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.9",
+    "openai": "^4.86.1"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "^22.0.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.20",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.13.9",
+    "typescript": "^5.8.2"
+  }
+}
