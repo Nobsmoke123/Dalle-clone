@@ -1,5 +1,5 @@
 import Card from "../Card/Card";
-import { RenderCardProps } from "./renderCard.type";
+import { RenderCardProps } from "./renderCard.types";
 
 const RenderCards = ({ data, title }: RenderCardProps) => {
   if (data.length > 0) {
