@@ -9,9 +9,15 @@ class PostControllers {
   }
 
   createPost = async (req: Request, res: Response) => {
-    const { prompt } = req.body;
+    const { prompt, name, photo } = req.body;
 
-    return res.status(200).json({});
+    const photoUrl = await this.postService.uploadImage(photo);
+
+    const post = await this.postService.savePost(name, prompt, photoUrl);
+
+    return res.status(200).json({
+      post,
+    });
   };
 }
 
