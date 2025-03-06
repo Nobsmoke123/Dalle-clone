@@ -15,6 +15,7 @@ app.use(
 );
 
 app.use(express.json());
+
 app.use("/api/v1/posts", PostRoutes);
 app.use("/api/v1/dalle", DalleRoutes);
 

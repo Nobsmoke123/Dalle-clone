@@ -1,16 +1,18 @@
 import { Request, Response } from "express";
-import DalleService from "../services/DalleService";
+import PostService from "../services/PostService";
 
 class PostControllers {
-  private readonly dalleService: DalleService;
+  private readonly postService: PostService;
 
   constructor() {
-    this.dalleService = new DalleService();
+    this.postService = new PostService();
   }
 
-  createPost = (req: Request, res: Response) => {
-    
-  }
+  createPost = async (req: Request, res: Response) => {
+    const { prompt } = req.body;
+
+    return res.status(200).json({});
+  };
 }
 
 export default PostControllers;
