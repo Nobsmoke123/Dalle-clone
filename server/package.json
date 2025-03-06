@@ -18,7 +18,8 @@
     "mongoose": "^8.12.1",
     "morgan": "^1.10.0",
     "nodemon": "^3.1.9",
-    "openai": "^4.86.1"
+    "openai": "^4.86.1",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { Logger } from "../utils/Logger";
 
 const ConnectDatabase = async (): Promise<void> => {
   try {
@@ -8,9 +9,9 @@ const ConnectDatabase = async (): Promise<void> => {
       const db = await mongoose.connect(URL);
       const readyState = db.connection.readyState;
       if (readyState === 1) {
-        console.log("Database connected successful.");
+        Logger.info("Database connected successful.");
       } else {
-        console.log("Database connection failed.");
+        Logger.error("Database connection failed.");
       }
     } else {
       throw new Error(
@@ -19,7 +20,8 @@ const ConnectDatabase = async (): Promise<void> => {
     }
   } catch (error) {
     // Add winston logger here
-    console.log(error);
+    Logger.error(error);
+    process.exit(1);
   }
 };
 

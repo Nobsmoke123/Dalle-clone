@@ -2,6 +2,7 @@ import http from "node:http";
 import * as dotenv from "dotenv";
 import app from "./app";
 import ConnectDatabase from "./database/connect";
+import { Logger } from "./utils/Logger";
 
 dotenv.config();
 
@@ -12,7 +13,7 @@ const server = http.createServer(app);
 const startServer = async () => {
   server.listen(PORT, async () => {
     await ConnectDatabase();
-    console.log(`Server listening on port ${PORT}`);
+    Logger.info(`Server listening on port ${PORT}`);
   });
 };
 
