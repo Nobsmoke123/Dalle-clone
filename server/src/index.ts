@@ -13,7 +13,7 @@ const server = http.createServer(app);
 const startServer = async () => {
   server.listen(PORT, async () => {
     await ConnectDatabase();
-    Logger.info(`Server listening on port ${PORT}`);
+    Logger.info(`Server listening on port http://localhost:${PORT}`);
   });
 };
 
