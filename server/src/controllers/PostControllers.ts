@@ -19,6 +19,12 @@ class PostControllers {
       post,
     });
   };
+
+  listPosts = async (_req: Request, res: Response) => {
+    const posts = this.postService.listPosts();
+
+    return res.status(200).json({ posts });
+  };
 }
 
 export default PostControllers;

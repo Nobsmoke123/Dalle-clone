@@ -25,6 +25,11 @@ class PostService {
 
     return result;
   };
+
+  listPosts = async () => {
+    const posts = await PostModel.find({});
+    return posts;
+  };
 }
 
 export default PostService;
