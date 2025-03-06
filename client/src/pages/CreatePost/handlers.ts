@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FormEvent } from "react";
 import { SetFormState } from "./createPost.types";
 import { getRamdomPrompt } from "../../utils";
+import { BASE_URL } from "../../constants";
 
 export const handleSubmit = (event: FormEvent) => {
   event.preventDefault();
@@ -33,4 +34,33 @@ export const handleSurpriseMe =
     setForm({ ...form, prompt: ramdomPrompt });
   };
 
-export const generateImage = () => {};
+export const generateImage =
+  (
+    form: SetFormState,
+    setForm: React.Dispatch<React.SetStateAction<SetFormState>>,
+    setGeneratingImg: React.Dispatch<React.SetStateAction<boolean>>
+  ) =>
+  async () => {
+    if (form.prompt) {
+      try {
+        setGeneratingImg(true);
+        const response = await fetch(`${BASE_URL}/dalle`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ prompt: form.prompt }),
+        });
+
+        const data = await response.json();
+
+        setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setGeneratingImg(false);
+      }
+    } else {
+      alert("Please enter a prompt.");
+    }
+  };

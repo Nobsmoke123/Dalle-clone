@@ -11,7 +11,6 @@ import {
 } from "./handlers";
 
 import { SetFormState } from "./createPost.types";
-import { BASE_URL } from "../../constants";
 
 const CreatePost: React.FC = () => {
   const navigate = useNavigate();
@@ -25,31 +24,6 @@ const CreatePost: React.FC = () => {
   const [generatingImg, setGeneratingImg] = useState(false);
 
   const [loading, setLoading] = useState(false);
-
-  const generateImage = async () => {
-    if (form.prompt) {
-      try {
-        setGeneratingImg(true);
-        const response = await fetch(`${BASE_URL}/dalle`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ prompt: form.prompt }),
-        });
-
-        const data = await response.json();
-
-        setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setGeneratingImg(false);
-      }
-    } else {
-      alert("Please enter a prompt.");
-    }
-  };
 
   return (
     <section className="max-w-7xl mx-auto">
@@ -110,7 +84,7 @@ const CreatePost: React.FC = () => {
           <button
             className="text-white bg-green-700 font-medium rounded-md text-sm w-full block px-5 py-2.5 text-center"
             type="button"
-            onClick={generateImage}
+            onClick={(() => generateImage(form, setForm, setGeneratingImg))()}
           >
             {generatingImg ? "Generating..." : "Generate"}
           </button>
