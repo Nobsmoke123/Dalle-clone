@@ -1,5 +1,8 @@
 import { v2 as cloudinary } from "cloudinary";
 import PostModel from "../database/models/Posts";
+import dotenv from "dotenv";
+dotenv.config();
+
 class PostService {
   constructor() {
     cloudinary.config({
