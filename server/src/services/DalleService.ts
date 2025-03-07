@@ -1,12 +1,19 @@
 import OpenAI from "openai";
+import dotenv from "dotenv";
+dotenv.config();
 
 class DalleService {
   private readonly client: OpenAI;
+  private readonly OPENAI_API_KEY = process.env.OPEN_AI_API_KEY;
 
   constructor() {
-    this.client = new OpenAI({
-      apiKey: process.env.OPEN_AI_API_KEY,
-    });
+    if (this.OPENAI_API_KEY !== undefined) {
+      this.client = new OpenAI({
+        apiKey: this.OPENAI_API_KEY,
+      });
+    } else {
+      throw new Error(`'OPEN_AI_API_KEY' is undefined.`);
+    }
   }
 
   generateImage = async (prompt: string) => {

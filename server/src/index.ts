@@ -1,14 +1,14 @@
 import http from "node:http";
-import * as dotenv from "dotenv";
 import app from "./app";
 import ConnectDatabase from "./database/connect";
 import { Logger } from "./utils/Logger";
 
+import dotenv from "dotenv";
 dotenv.config();
 
-const PORT = process.env.PORT;
-
 const server = http.createServer(app);
+
+const PORT = process.env.PORT;
 
 const startServer = async () => {
   server.listen(PORT, async () => {
