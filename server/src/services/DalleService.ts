@@ -4,7 +4,7 @@ dotenv.config();
 
 class DalleService {
   private readonly client: OpenAI;
-  private readonly OPENAI_API_KEY = process.env.OPEN_AI_API_KEY;
+  private readonly OPENAI_API_KEY = process.env.OPEN_AI_API_KEY_JOYNAMIC;
 
   constructor() {
     if (this.OPENAI_API_KEY !== undefined) {
