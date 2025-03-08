@@ -2,25 +2,25 @@ import AppError from "./BaseError";
 import ErrorConstants from "./ErrorConstants";
 
 export class BadRequestException extends AppError {
-  constructor() {
-    super(404, ErrorConstants.BAD_REQUEST_EXCEPTION);
+  constructor(public message = ErrorConstants.BAD_REQUEST_EXCEPTION) {
+    super(404, message);
   }
 }
 
 export class UnAuthorizedAccess extends AppError {
-  constructor() {
-    super(401, ErrorConstants.UNAUTHORIZED_ACCESS);
+  constructor(public message = ErrorConstants.UNAUTHORIZED_ACCESS) {
+    super(401, message);
   }
 }
 
 export class InternalServerError extends AppError {
-  constructor() {
-    super(500, ErrorConstants.INTERNAL_SERVER_ERROR);
+  constructor(public message = ErrorConstants.INTERNAL_SERVER_ERROR) {
+    super(500, message);
   }
 }
 
-export class NotFoundException extends AppError {
-  constructor() {
-    super(404, ErrorConstants.NOT_FOUND_EXCEPTION);
+export class NotFoundExceptionError extends AppError {
+  constructor(public message = ErrorConstants.NOT_FOUND_EXCEPTION) {
+    super(404, message);
   }
 }
