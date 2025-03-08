@@ -1,15 +1,12 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
 
 import DalleController from "../controllers/DalleController";
+import AsyncWrapper from "../middleware/AsyncWrapper";
 
 const router = Router();
 
 const dalleController = new DalleController();
 
-router.get("/", (_req: Request, res: Response) => {
-  res.send("Hello World from Dalle Routes.");
-});
-
-router.post("/", dalleController.generateImage);
+router.post("/", AsyncWrapper(dalleController.generateImage));
 
 export default router;
